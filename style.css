@@ -1,122 +1,201 @@
-/* --- ESTILO COTTAGECORE REFORMADO (LEGIBILIDAD Y TAMAÑO) --- */
+/* --- ESTILO COTTAGECORE MÓVIL-FIRST & EQUILIBRADO --- */
 
 :root {
-    --primary-color: #5d4037;   /* Marrón madera */
-    --accent-color: #a5d6a7;    /* Verde musgo */
-    --text-color: #3e2723;      /* Texto oscuro legible */
-    --bg-light: #fdfaf5;       /* Fondo crema */
-    --flower-pink: #ef9a9a;    /* Rosa floral */
+    /* Paleta Cottagecore (Maderas, Verdes, Cremas) */
+    --primary-color: #5d4037;   /* Marrón madera suave */
+    --accent-color: #a5d6a7;    /* Verde musgo suave */
+    --text-color: #3e2723;      /* Marrón oscuro muy legible */
+    --bg-light: #fdfaf5;       /* Crema suave */
+    --flower-pink: #ef9a9a;    /* Rosa floral empolvado */
+    
+    /* Tipografías */
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Poppins', sans-serif;
 }
 
+/* --- AJUSTES GLOBALES --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    color: var(--text-color);
+    background-color: var(--bg-light);
+    /* Sutil textura de papel */
+    background-image: url('https://www.transparenttextures.com/patterns/p4.png');
+}
 
 body {
     font-family: var(--font-body);
-    background-color: var(--bg-light);
-    color: var(--text-color);
-    line-height: 1.6;
+    font-weight: 400;
+    line-height: 1.6; /* Un poco menos para móvil */
+    overflow-x: hidden; /* Evita scroll lateral */
 }
 
+/* --- CONTENEDOR AJUSTADO (MÁS ANCHO EN MÓVIL) --- */
 .container {
-    padding: 60px 5%;
-    max-width: 1100px;
+    padding: 60px 5%; /* Menos margen lateral (antes 10%) */
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-/* --- SOLUCIÓN A IMÁGENES ENORMES --- */
+/* --- SOLUCIÓN A IMÁGENES GIGANTES --- */
+/* Limita la altura de CUALQUIER imagen para que no sea infinita */
 img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Esto hace que la imagen rellene el hueco sin estirarse */
+    max-width: 100%;
+    height: auto;
     display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+
+/* --- TIPOGRAFÍA Y LEGIBILIDAD --- */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+h1 { 
+    font-size: 2.8rem; /* Menor para móvil */
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6); 
+    line-height: 1.1;
+}
+
+h2 { 
+    font-size: 2.2rem; 
+    text-align: center; 
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+    left: 50%; transform: translateX(-50%);
+}
+h2::after {
+    content: '✿';
+    color: var(--flower-pink);
+    position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%);
+    font-size: 1.3rem;
+}
+
+h3 { font-size: 1.6rem; margin-bottom: 10px; text-align: center; }
+
+p { margin-bottom: 15px; font-size: 1.05rem; text-align: center; }
+
+/* Cajas de texto con fondo para legibilidad */
+.about-text p, .food-text p, .quote {
+    background-color: rgba(255, 252, 240, 0.9);
+    padding: 20px;
     border-radius: 10px;
-}
-
-/* Marcos tipo "Cottage" (Madera y sombras) */
-.about-img-frame, .cat-card, .food-img {
-    border: 8px solid var(--primary-color);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 8px 8px 0px var(--accent-color);
-    background: white;
-}
-
-/* Control de altura para que no sean infinitas */
-.about-img-frame { height: 450px; }
-.cat-card img { height: 300px; }
-.food-img { height: 400px; }
-
-/* --- SECCIONES --- */
-#hero {
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.hero-content {
-    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro para que la letra blanca se vea */
-    padding: 30px;
-    border-radius: 20px;
-    color: white;
-    border: 2px solid var(--accent-color);
-}
-
-h1 { font-family: var(--font-heading); font-size: 3rem; margin-bottom: 10px; }
-
-/* Grid para que las fotos de los gatos salgan iguales */
-.grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    align-items: center;
-}
-
-/* Estilo de los textos (Cottage/Papel) */
-.about-text, .food-text {
-    background: rgba(255, 252, 240, 0.9);
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px dashed var(--primary-color);
+    border: 1px dashed rgba(93, 64, 55, 0.2);
+    margin-bottom: 20px;
 }
 
 .quote {
     font-style: italic;
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     color: var(--primary-color);
-    margin: 20px 0;
-    padding-left: 15px;
     border-left: 4px solid var(--flower-pink);
 }
 
-/* Navegación */
+.comic-quote {
+    color: #cc4444; font-weight: bold; text-transform: uppercase;
+    margin: 20px 0; font-size: 1.1rem;
+}
+
+/* --- NAVEGACIÓN CORREGIDA (SIMPLE Y CENTRADA) --- */
 nav {
-    position: fixed;
-    top: 0; width: 100%;
-    background: white;
-    padding: 15px;
-    text-align: center;
+    position: fixed; top: 0; width: 100%;
+    padding: 10px;
+    background-color: rgba(253, 250, 245, 0.95);
     z-index: 1000;
-    border-bottom: 3px solid var(--accent-color);
-}
-
-.logo { font-weight: bold; color: var(--primary-color); font-size: 1.4rem; }
-
-footer {
-    padding: 40px;
+    backdrop-filter: blur(5px);
+    border-bottom: 2px solid var(--accent-color);
     text-align: center;
-    background: var(--primary-color);
-    color: white;
+}
+.logo { 
+    font-family: var(--font-heading); 
+    font-size: 1.3rem; font-weight: bold; 
+    color: var(--primary-color);
 }
 
-/* Responsive para móvil */
-@media (max-width: 600px) {
-    h1 { font-size: 2rem; }
-    .about-img-frame { height: 300px; }
+/* --- SECCIONES --- */
+
+/* Hero (Portada) */
+#hero {
+    height: 90vh; /* Un poco menos que el total para móvil */
+    background-size: cover; background-position: center;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 5%;
+}
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px; border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.btn {
+    display: inline-block; padding: 10px 25px;
+    background-color: var(--accent-color); color: var(--primary-color);
+    text-decoration: none; font-weight: 600; border-radius: 25px;
+    margin-top: 20px; box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+
+/* Grids (En móvil van en columna) */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna por defecto */
+    gap: 30px;
+    align-items: center;
+}
+
+/* Marcos Cottage para imágenes */
+.about-img-frame img, .food-img img {
+    border: 6px solid var(--primary-color);
+    box-shadow: 8px 8px 0 rgba(165, 214, 167, 0.5);
+    height: auto;
+    /* Evita que sean gigantes en móvil */
+    max-height: 400px; 
+    object-fit: contain; /* No corta la imagen, pero ajusta */
+}
+
+/* Gatos Cards */
+.cat-card {
+    background: #fff; border-radius: 12px; overflow: hidden;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+}
+/* Forzamos tamaño de las fotos de los gatos en móvil */
+.cat-card img {
+    width: 100%;
+    height: 220px; /* Tamaño fijo */
+    object-fit: cover; /* Recorta para rellenar */
+    border-radius: 0;
+}
+.cat-info { padding: 15px; text-align: center; }
+
+/* Food Section */
+.food-img img {
+    transform: rotate(-2deg);
+}
+
+/* Footer */
+footer {
+    text-align: center; padding: 40px 5%;
+    background-color: var(--primary-color);
+    color: #fdfaf5;
+}
+.signature { margin-top: 15px; font-size: 0.85rem; opacity: 0.8; }
+
+/* --- RESPONSIVE PARA TABLET/PC --- */
+@media (min-width: 768px) {
+    .grid-2 { grid-template-columns: 1fr 1fr; } /* Dos columnas en PC */
+    .container { padding: 60px 10%; }
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.8rem; }
+    p { text-align: left; }
+    .about-text p, .food-text p { text-align: left; }
+    h3 { text-align: left; }
+    .cat-card img { height: 350px; }
+    .about-img-frame img, .food-img img { max-height: none; }
 }
