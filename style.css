@@ -1,206 +1,122 @@
-/* --- ESTILO COTTAGECORE & LEGIBILIDAD --- */
+/* --- ESTILO COTTAGECORE REFORMADO (LEGIBILIDAD Y TAMAÑO) --- */
 
 :root {
-    /* Paleta de colores Cottage */
-    --primary-color: #5d4037;   /* Marrón madera suave */
-    --accent-color: #a5d6a7;    /* Verde musgo suave */
-    --text-color: #3e2723;      /* Marrón oscuro para máxima legibilidad */
-    --bg-light: #fdfaf5;       /* Crema muy suave, casi blanco, para fondos */
-    --flower-pink: #ef9a9a;    /* Rosa empolvado para detalles */
-    
-    /* Tipografías claras y legibles */
-    --font-heading: 'Cormorant Garamond', serif; /* Romántica pero clara */
-    --font-body: 'Poppins', sans-serif;         /* Moderna y muy legible */
+    --primary-color: #5d4037;   /* Marrón madera */
+    --accent-color: #a5d6a7;    /* Verde musgo */
+    --text-color: #3e2723;      /* Texto oscuro legible */
+    --bg-light: #fdfaf5;       /* Fondo crema */
+    --flower-pink: #ef9a9a;    /* Rosa floral */
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Poppins', sans-serif;
 }
 
-/* --- ESTILOS GENERALES --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-    color: var(--text-color);
-    background-color: var(--bg-light);
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: var(--font-body);
-    font-weight: 400; /* Un poco más de grosor para legibilidad */
-    line-height: 1.8;
+    background-color: var(--bg-light);
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
 .container {
-    padding: 80px 10%;
-    max-width: 1200px;
+    padding: 60px 5%;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
-.bg-light { 
-    background-color: var(--bg-light); 
-    /* Pequeño detalle de textura de madera muy sutil */
-    background-image: url('https://www.transparenttextures.com/patterns/p4.png');
+/* --- SOLUCIÓN A IMÁGENES ENORMES --- */
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esto hace que la imagen rellene el hueco sin estirarse */
+    display: block;
+    border-radius: 10px;
 }
 
-/* --- TIPOGRAFÍA CON MÁXIMA VISIBILIDAD --- */
-h1, h2, h3 {
-    font-family: var(--font-heading);
-    color: var(--primary-color);
-    font-weight: 700;
-    margin-bottom: 20px;
+/* Marcos tipo "Cottage" (Madera y sombras) */
+.about-img-frame, .cat-card, .food-img {
+    border: 8px solid var(--primary-color);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 8px 8px 0px var(--accent-color);
+    background: white;
 }
 
-h1 { 
-    font-size: 3.5rem; 
-    line-height: 1.2; 
-    color: #fff; /* Texto blanco sobre fondo oscuro */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para legibilidad */
-}
+/* Control de altura para que no sean infinitas */
+.about-img-frame { height: 450px; }
+.cat-card img { height: 300px; }
+.food-img { height: 400px; }
 
-h2 { 
-    font-size: 2.8rem; 
-    text-align: center; 
-    margin-bottom: 50px;
-    position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* Detalle floral bajo los H2 */
-h2::after {
-    content: '✿';
-    color: var(--flower-pink);
-    position: absolute;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.5rem;
-}
-
-h3 { font-size: 1.8rem; }
-
-p { margin-bottom: 15px; font-size: 1.1rem; }
-
-/* Asegurar legibilidad en párrafos largos */
-.about-text p, .food-text p {
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
-    padding: 10px;
-    border-radius: 8px;
-}
-
-/* --- ELEMENTOS UI --- */
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: var(--accent-color);
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 30px;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.btn:hover {
-    background-color: transparent;
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-}
-
-.quote {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    font-style: italic;
-    border-left: 3px solid var(--flower-pink);
-    padding-left: 20px;
-    color: var(--primary-color);
-    margin: 30px 0;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 8px;
-}
-
-.comic-quote {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #cc4444;
-    margin: 20px 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.highlight { color: var(--flower-pink); font-weight: 600; }
-
-/* --- NAVEGACIÓN COTTAGE --- */
-nav {
-    position: fixed;
-    top: 0; width: 100%;
-    padding: 15px 5%;
-    background-color: rgba(253, 250, 245, 0.95); /* Fondo crema claro */
-    display: flex; justify-content: space-between;
-    z-index: 1000;
-    backdrop-filter: blur(5px);
-    border-bottom: 2px solid var(--accent-color);
-}
-.logo { 
-    font-family: var(--font-heading); 
-    font-size: 1.5rem; 
-    font-weight: 700; 
-    color: var(--primary-color);
-}
-
-/* --- SECCIONES ESPECÍFICAS --- */
-
-/* Hero (Portada) */
+/* --- SECCIONES --- */
 #hero {
     height: 100vh;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Efecto Parallax sutil */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #fff;
-    padding: 0 5%;
 }
 
-/* Asegurar visibilidad del texto en la portada */
 .hero-content {
-    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro semitransparente */
-    padding: 40px;
-    border-radius: 15px;
-    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro para que la letra blanca se vea */
+    padding: 30px;
+    border-radius: 20px;
+    color: white;
+    border: 2px solid var(--accent-color);
 }
 
-/* Grids */
+h1 { font-family: var(--font-heading); font-size: 3rem; margin-bottom: 10px; }
+
+/* Grid para que las fotos de los gatos salgan iguales */
 .grid-2 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     align-items: center;
 }
 
-/* Ella y Nosotros */
-.about-img-frame {
-    position: relative;
-}
-.about-img-frame img {
-    width: 100%;
+/* Estilo de los textos (Cottage/Papel) */
+.about-text, .food-text {
+    background: rgba(255, 252, 240, 0.9);
+    padding: 30px;
     border-radius: 15px;
-    /* Borde rustico de madera */
-    border: 8px solid var(--primary-color); 
-    box-shadow: 10px 10px 0 rgba(165, 214, 167, 0.5); /* Sombra verde musgo */
+    border: 1px dashed var(--primary-color);
 }
-.caption { text-align: center; font-style: italic; font-size: 0.9rem; margin-top: 15px;}
 
-/* Gatos (Cards) */
-.cats-grid { gap: 30px; }
-.cat-card {
-    background: #fff;
+.quote {
+    font-style: italic;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin: 20px 0;
+    padding-left: 15px;
+    border-left: 4px solid var(--flower-pink);
+}
+
+/* Navegación */
+nav {
+    position: fixed;
+    top: 0; width: 100%;
+    background: white;
+    padding: 15px;
+    text-align: center;
+    z-index: 1000;
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.logo { font-weight: bold; color: var(--primary-color); font-size: 1.4rem; }
+
+footer {
+    padding: 40px;
+    text-align: center;
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Responsive para móvil */
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    .about-img-frame { height: 300px; }
+}
